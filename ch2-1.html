@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch2.1 Stress and strain tensor</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" data-current="ch2-1"></aside>
+    <main class="content">
+      <section class="note-block">
+        <p class="eyebrow">Ch2.1</p>
+        <h1>Stress and strain tensor</h1>
+
+        <p>To formulate the stress response in a manner consistent with large deformation, the Cauchy stress tensor (Fig. 2.1.1) is adopted throughout this study. The Cauchy stress represents the true stress—force per unit area on the current, or deformed, configuration—unlike engineering stress, which uses the original cross-sectional area.</p>
+
+        <div class="math-block">
+          $$
+          \boldsymbol{\sigma} =
+          \begin{bmatrix}
+          \sigma_x & \tau_{xy} & \tau_{xz} \\
+          \tau_{yx} & \sigma_y & \tau_{yz} \\
+          \tau_{zx} & \tau_{zy} & \sigma_z
+          \end{bmatrix}
+          \tag{2.1.1}
+          $$
+        </div>
+
+        <p>Normal stress is taken as positive in compression.</p>
+
+        <figure class="figure figure-compact">
+          <img src="images/fig2-1-1.svg" alt="Cauchy stress components acting on an infinitesimal element" loading="lazy">
+          <figcaption>Fig. 2.1.1 Cauchy stress components acting on an infinitesimal element in a continuum</figcaption>
+        </figure>
+
+        <h2>Effective stress</h2>
+        <p>In soil mechanics, the concept of effective stress is fundamental. While the Cauchy stress tensor $\boldsymbol{\sigma}$ represents total stress, it is the effective stress tensor $\boldsymbol{\sigma}'$ that controls deformation of the soil skeleton. Effective stress is defined as</p>
+        <div class="math-block">
+          $$
+          \boldsymbol{\sigma}' = \boldsymbol{\sigma} - u\mathbf{I}
+          = \begin{bmatrix}
+          \sigma_x-u & \tau_{xy} & \tau_{xz} \\
+          \tau_{yx} & \sigma_y-u & \tau_{yz} \\
+          \tau_{zx} & \tau_{zy} & \sigma_z-u
+          \end{bmatrix}
+          = \begin{bmatrix}
+          \sigma'_x & \tau_{xy} & \tau_{xz} \\
+          \tau_{yx} & \sigma'_y & \tau_{yz} \\
+          \tau_{zx} & \tau_{zy} & \sigma'_z
+          \end{bmatrix}
+          \tag{2.1.2}
+          $$
+        </div>
+        <p>Here, $u$ is pore-water pressure and $\mathbf{I}$ is the second-order identity tensor.</p>
+
+        <h2>Incremental strain</h2>
+        <p>To accommodate large deformation within an Updated Lagrangian framework, deformation is expressed incrementally relative to the current configuration in a Cartesian coordinate system. Accordingly, the linear strain increment tensor is employed as the simplest measure of deformation:</p>
+        <div class="math-block">
+          $$
+          \mathrm{d}\boldsymbol{\varepsilon} =
+          \begin{bmatrix}
+          \mathrm{d}\varepsilon_x & \mathrm{d}\gamma_{xy} & \mathrm{d}\gamma_{xz} \\
+          \mathrm{d}\gamma_{yx} & \mathrm{d}\varepsilon_y & \mathrm{d}\gamma_{yz} \\
+          \mathrm{d}\gamma_{zx} & \mathrm{d}\gamma_{zy} & \mathrm{d}\varepsilon_z
+          \end{bmatrix}
+          = \begin{bmatrix}
+          \frac{\partial v_x}{\partial x} & \frac{\partial v_x}{\partial y}+\frac{\partial v_y}{\partial x} & \frac{\partial v_x}{\partial z}+\frac{\partial v_z}{\partial x} \\
+          \frac{\partial v_y}{\partial x}+\frac{\partial v_x}{\partial y} & \frac{\partial v_y}{\partial y} & \frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y} \\
+          \frac{\partial v_z}{\partial x}+\frac{\partial v_x}{\partial z} & \frac{\partial v_z}{\partial y}+\frac{\partial v_y}{\partial z} & \frac{\partial v_z}{\partial z}
+          \end{bmatrix}
+          \tag{2.1.3}
+          $$
+        </div>
+        <p>Here, $\mathbf{v}$ is displacement relative to the current configuration; subscripts denote basis directions in the Cartesian coordinate system. Normal strain is taken as positive in compression. Total strain is obtained by integrating incremental strain over time:</p>
+        <div class="math-block">$$\boldsymbol{\varepsilon}^{\mathrm{tot}} = \int_0^t \mathrm{d}\boldsymbol{\varepsilon}(t) \tag{2.1.4}$$</div>
+        <p>Here, $t$ denotes final time or total deformation extent. With a corotational formulation (for example, the Jaumann rate), apparent stress variations caused by rotation are corrected in a fixed Cartesian coordinate system $(x,y,z)$. The total strain can then be approximately evaluated as</p>
+        <div class="math-block">$$\boldsymbol{\varepsilon}^{\mathrm{tot}} \simeq \sum_{j=0}^{N-1}\Delta\boldsymbol{\varepsilon}^{j} \tag{2.1.5}$$</div>
+        <p>Here, $\Delta\boldsymbol{\varepsilon}^{j}$ is the numerically obtained strain increment at time step $j$. This provides a consistent coordinate system for incremental stress and strain updates.</p>
+
+        <h2>Natural strain and state variables</h2>
+        <p>For specific deformation modes, such as uniaxial deformation or isotropic compression, analytical integration is possible. In those cases, total strain corresponds exactly to natural (logarithmic) strain. Natural strain in volumetric, vertical, and radial directions is defined as</p>
+        <div class="math-block">
+          $$\varepsilon_{nv} = -\ln\left(\frac{V}{V_0}\right) \tag{2.1.6}$$
+          $$\varepsilon_{na} = -\ln\left(\frac{H}{H_0}\right) \tag{2.1.7}$$
+          $$\varepsilon_{nr} = -\ln\left(\frac{r}{r_0}\right) \tag{2.1.8}$$
+        </div>
+        <p>Here, $V$, $H$, and $r$ denote the current volume, height, and radius of the deforming body, while $V_0$, $H_0$, and $r_0$ are their values in the initial configuration. These natural strains are associated with conventional engineering strains (with subscript $n$ omitted):</p>
+        <div class="math-block">
+          $$\varepsilon_v = 1 - \exp(-\varepsilon_{nv}) \tag{2.1.9}$$
+          $$\varepsilon_a = 1 - \exp(-\varepsilon_{na}) \tag{2.1.10}$$
+          $$\varepsilon_r = 1 - \exp(-\varepsilon_{nr}) \tag{2.1.11}$$
+        </div>
+        <p>The void ratio, $e$, a volumetric state variable commonly used in soil mechanics, is defined as</p>
+        <div class="math-block">$$e = \frac{V_v}{V_s} \tag{2.1.12}$$</div>
+        <p>where $V_v$ is volume of voids and $V_s$ is volume of solids. It is sometimes expressed as specific volume, $f$, by adding unity to the void ratio:</p>
+        <div class="math-block">$$f = 1+e = \frac{V_t}{V_s} \tag{2.1.13}$$</div>
+        <p>Here, $V_t$ is total volume of saturated soil, such that $V_t = V_s + V_v$. These state variables relate to volumetric strain measures as</p>
+        <div class="math-block">
+          $$\varepsilon_v = \frac{e_0-e}{1+e_0} = 1-\frac{f}{f_0} \tag{2.1.14}$$
+          $$\varepsilon_{nv} = -\ln\left(\frac{f}{f_0}\right) \tag{2.1.15}$$
+        </div>
+        <p>Here, $e_0$ and $f_0$ are the initial void ratio and specific volume, respectively.</p>
+      </section>
+    </main>
+  </div>
+  <script src="toc.js"></script>
+</body>
+</html>

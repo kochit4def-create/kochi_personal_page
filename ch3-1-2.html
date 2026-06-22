@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch3.1.2 Calibration of the anisotropic parameters from triaxial data</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" data-current="ch3-1-2"></aside>
+    <main class="content">
+      <section class="note-block">
+        <p class="eyebrow">Ch3.1.2</p>
+        <h1>Calibration of the anisotropic parameters from triaxial data</h1>
+
+        <p>The three parameters $(E_v,\nu_{vh},\alpha)$ can be identified from the following three test results obtained from conventional triaxial set-up. The procedure, summarised in Fig. 3.1.2, is detailed below:</p>
+        <figure class="figure">
+          <img src="images/fig3-1-2.svg" alt="Placeholder for the determination procedures of the three anisotropy elasticity parameters" loading="lazy">
+          <figcaption>Fig. 3.1.2 Schematic of determination procedures of the three anisotropy elasticity parameters</figcaption>
+        </figure>
+
+        <h2>Effective stress path within conventional undrained triaxial compression</h2>
+        <p>Imposing the undrained condition (i.e., $\delta\varepsilon_v^e=0$) into Eq. (3.1.10) gives:</p>
+        <div class="math-block">$$\left.\frac{\delta q}{\delta p'}\right|_{\mathrm{UTC}}=-\frac{J^*}{K^*}=-\frac{3}{2}\frac{(1-4\nu_{vh})\alpha^2-2\nu_{vh}\alpha+2}{(1-\nu_{vh})\alpha^2+\nu_{vh}\alpha-1} \tag{3.1.20}$$</div>
+        <p>Thus, the initial ESP slope in UTC $\left.\delta q/\delta p'\right|_{\mathrm{UTC}}$ depends only on the two parameters $(\nu_{vh},\alpha)$.</p>
+
+        <h2>Effective stress path within the overconsolidation range under one-dimensional compression</h2>
+        <p>With the 1-D compression condition (i.e., $\delta\varepsilon_v^e=\delta\varepsilon_a^e$ and $\delta\varepsilon_d^e=\frac{2}{3}\delta\varepsilon_a^e$), Eq. () yields again a function only of $(\nu_{vh},\alpha)$:</p>
+        <div class="math-block">$$\left.\frac{\delta q}{\delta p'}\right|_{\mathrm{1DOC}}=\frac{3(1-\nu_{vh}\alpha^2-\nu_{vh}\alpha)}{2\nu_{vh}\alpha^2-\nu_{vh}\alpha+1} \tag{3.1.21}$$</div>
+        <p>From the two measured slopes in (i)–(ii), the dimensionless parameters $(\nu_{vh},\alpha)$ are obtained by solving Eqs. (3.1.20) and (3.1.21) for the two unknowns.</p>
+
+        <h2>Volumetric stress-strain curve within the OC range from the isotropic compression test</h2>
+        <p>The volumetric response is typically described as:</p>
+        <div class="math-block">$$\delta\varepsilon_v^e=\frac{\kappa^*}{p'}\delta p'=\frac{1}{K^*}\delta p' \tag{3.1.22}$$</div>
+        <p>Here, $\kappa^*$ is the tangential (or secant) slope of the unloading-reloading line under isotropic compression. With $(\nu_{vh},\alpha)$ now known, the stiffness scale is treated as a state-dependent quantity (i.e., a function of effective principal stress):</p>
+        <div class="math-block">$$E_v=\frac{(1-4\nu_{vh})\alpha^2-2\nu_{vh}\alpha+2}{\alpha^2}\frac{p'}{\kappa^*} \tag{3.1.23}$$</div>
+        <p>Other datasets may be chosen; however, this procedure is justified because the selected tests primarily capture three essential components of soil behaviour: (i) short-term shear response, (ii) long(mid)-term settlement, and (iii) state dependence (i.e., confining pressure), respectively.</p>
+
+        <p>The initial ESP slope in UTC $\left.\delta q/\delta p'\right|_{\mathrm{UTC}}$ for peats reported in previous studies (Yamaguchi et al., 1984; Muraro and Jommi, 2021; Li et al., 2022) are summarised as a function of water content (Fig. 3.1.3 (a)). The test data from Li et al. (2022) indicate that the stress dependence of anisotropy in peats is small up to about 100 kPa (Fig. 3.1.3 (b)).</p>
+        <figure class="figure">
+          <img src="images/fig3-1-3.svg" alt="Placeholder for data on the effective stress path under conventional undrained triaxial compression" loading="lazy">
+          <figcaption>Fig. 3.1.3 Data on the effective stress path (ESP) under the conventional undrained triaxial compression (UTC): (a) Initial tangent slope of the ESP as a function of water content and (b) ESPs for different initial mean effective principal stress</figcaption>
+        </figure>
+
+        <p>The ESP slope within the OC range under 1-D compression $\left.\delta q/\delta p'\right|_{\mathrm{1DOC}}$ is here described by the well-known empirical relationship:</p>
+        <div class="math-block">$$K_{0\mathrm{OC}}=K_{0\mathrm{NC}}\mathrm{OCR}^{m} \tag{3.1.24}$$</div>
+        <p>Here, $K_{0\mathrm{OC}}$ is the coefficient of earth pressure at rest during unloading, $K_{0\mathrm{NC}}$ that in the normal compression range, OCR the overconsolidation ratio, and $m$ a material parameter. With the relationship, $\left.\delta q/\delta p'\right|_{\mathrm{1DOC}}$ yields:</p>
+        <div class="math-block">$$\left.\frac{\delta q}{\delta p'}\right|_{\mathrm{1DOC}}=\frac{3\left\{(\mathrm{OCR}-1)+K_{0\mathrm{NC}}(\mathrm{OCR}^{m}-\mathrm{OCR})\right\}}{(\mathrm{OCR}-1)-2K_{0\mathrm{NC}}(\mathrm{OCR}^{m}-\mathrm{OCR})} \tag{3.1.25}$$</div>
+        <p>The parameters $(K_{0\mathrm{NC}},m)$ obtained from a previous study on peats (Hayashi et al., 2012) are summarised in Fig. 3.1.4 (a) and Fig. 3.1.4 (b). Using these values, Fig. 3.1.4 (c) presents the values of ESP slope estimated from Eq. (3.1.25), as a function of OCR and natural water content.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 3.1.1 Approximate values of anisotropy parameters for peat with different water content</caption>
+            <thead>
+              <tr>
+                <th>Assumed natural water content $w$ (%)</th>
+                <th>$\left.\delta q/\delta p'\right|_{\mathrm{UTC}}$</th>
+                <th>$\left.\delta q/\delta p'\right|_{\mathrm{1DOC}}$</th>
+                <th>$\alpha^2=E_h/E_v$</th>
+                <th>$\nu_{vh}$</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>200</td><td>−2.8</td><td>1.35</td><td>3.1</td><td>0.08</td></tr>
+              <tr><td>500</td><td>−3.8</td><td>1.7</td><td>2.5</td><td>0.07</td></tr>
+              <tr><td>1,000</td><td>−4.5</td><td>2.5</td><td>2.4</td><td>0.02</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure class="figure">
+          <img src="images/fig3-1-4.svg" alt="Placeholder for the dataset for the effective stress path under one-dimensional compression" loading="lazy">
+          <figcaption>Fig. 3.1.4 Dataset for the ESP under 1-D compression, summarised from previous studies: (a) $K_0$ value for normally consolidated states, (b) Exponent $m$ to express the reduction in $K$ value due to unloading, and (c) Secant ESP slope under 1-D compression as a function of OCR for several water contents and plasticity index</figcaption>
+        </figure>
+        <p>The two anisotropy parameters $(\nu_{vh},\alpha)$ consistent with these results are summarised in Table 3.1.1. Rather than solving the simultaneous Eqs. (3.1.20) and (3.1.21) exactly, they were obtained by a simple trial-and-error calibration. As practical cues: a smaller absolute value of $\left.\delta q/\delta p'\right|_{\mathrm{UTC}}$ implies a larger $\alpha^2$; a larger $\left.\delta q/\delta p'\right|_{\mathrm{1DOC}}$ implies a smaller $\nu_{vh}$.</p>
+        <p>Meanwhile, these two parameters may merely add the degrees of freedom in fitting. To claim a measurement of anisotropy, it is preferable to complement the calibration with small-strain measurements as described by previous studies such as Nishimura (2014). The remaining parameter $E_v$ depends only on $\kappa^*$ apart from the state variable $p'$. There are two conventions to determine $\kappa^*$: 1) “Linear” $\kappa^*$ model (e.g., Cam-Clay), where the secant value of URL slope is chosen for $\kappa^*$, typically approximated as $\kappa^*=\kappa^*_{sec}\simeq0.1\sim0.2\lambda^*$; and 2) Hysteretic model (e.g., MIT-E3 model by Whittle and Kavvadas, 1994). The latter will be described in the following section.</p>
+      </section>
+    </main>
+  </div>
+  <script src="toc.js"></script>
+</body>
+</html>

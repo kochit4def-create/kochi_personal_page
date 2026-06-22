@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch3.2.1 Compressibility</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" data-current="ch3-2-1"></aside>
+    <main class="content">
+      <section class="note-block">
+        <p class="eyebrow">Ch3.2.1</p>
+        <h1>Compressibility</h1>
+
+        <p>Soil hardens due to consolidation (i.e., volumetric hardening). This hardening is conventionally represented by the evolution of yield stress (See Chapter 3.2.3), which separates the regions with and without consolidation history, referred to as the normally consolidated (NC) and overconsolidated (OC) state, respectively. In what follows, the parameters governing the elasto-plastic compression behaviour of soil are introduced.</p>
+        <figure class="figure figure-small">
+          <img src="images/fig3-2-1.svg" alt="Placeholder for the schematic illustration of consolidation behaviour of soft soils" loading="lazy">
+          <figcaption>Fig. 3.2.1 Schematic illustration of consolidation behaviour of soft soils</figcaption>
+        </figure>
+
+        <p>A typical effective stress-volumetric strain relationship obtained from oedometer tests is schematically illustrated in Fig. 3.2.1. During the first loading stage, a distinct yield stress $\sigma'_{yld}$ is identified, followed by a log-linear portion known as the 1-D compression line, characterised by the oedometric compression index defined as:</p>
+        <div class="math-block">$$C_c=-\frac{\partial e}{\partial\ln\sigma'_z} \tag{3.2.4}$$</div>
+        <p>Although the above is the most practical representation, it is convenient to employ the natural logarithm and reasonable to adopt the natural strain for describing large deformation of peats (Butterfield, 1979; Oikawa, 1987):</p>
+        <div class="math-block">$$\lambda^*_{oed}=\frac{\partial\varepsilon_{nv}}{\partial\ln\sigma'_z} \tag{3.2.5}$$</div>
+        <p>They are interrelated as:</p>
+        <div class="math-block">$$\lambda^*=\frac{C_c}{2.303(1+e_0)(1-\varepsilon_v)} \tag{3.2.6}$$</div>
+        <p>Hereafter, the mechanical indices are expressed in both the void-ratio-based and natural strain-based forms, with their interrelationship explicitly given. Note that the natural-strain-based form is primarily employed in the formulations developed in the present study.</p>
+
+        <p>The Unloading–Reloading Loop (URL) following the first loading, in which the compressibility is smaller than that in the NC state, represents a largely recoverable process and is characterised by the oedometric swelling index defined as:</p>
+        <div class="math-block">
+          $$C_s=-\frac{\partial e}{\partial\ln\sigma'_z} \tag{3.2.7}$$
+          $$\kappa^*_{oed}=\frac{\partial\varepsilon^e_{nv}}{\partial\ln\sigma'_z} \tag{3.2.8}$$
+          $$\kappa^*_{oed}=\frac{C_s}{2.303(1+e_0)(1-\varepsilon_v)} \tag{3.2.9}$$
+        </div>
+        <p>The plastic compression is thus represented by the difference $\lambda^*_{oed}-\kappa^*_{oed}$, leading to the following expression for the evolution of yield stress:</p>
+        <div class="math-block">$$\sigma'_{yld}=\sigma'_{yld0}\exp\left(\frac{\varepsilon^p_{nv}}{\lambda^*_{oed}-\kappa^*_{oed}}\right) \tag{3.2.10}$$</div>
+        <p>Here, $\sigma'_{yld0}$ is the initial yield stress. The plastic volumetric strain $\varepsilon^p_{nv}$ serves as the hardening parameter to memorise the past stress history.</p>
+
+        <p>Meanwhile, compression under isotropic stress application similarly follows a single line, which is parallel to the 1-D compression line, referred to as isotropic compression line. The corresponding isotropic compression index is defined as:</p>
+        <div class="math-block">$$\lambda^*=\frac{\partial\varepsilon_{nv}}{\partial\ln p'} \tag{3.2.11}$$</div>
+        <p>It is well established, both experimentally and theoretically, that</p>
+        <div class="math-block">$$\lambda^*=\lambda^*_{oed} \tag{3.2.12}$$</div>
+        <p>Accordingly, the notation $\lambda^*_{oed}$ is not used hereafter. Previous studies (e.g., Oikawa, 1986) show that the compression index for peats is strongly dependent on the natural water content (Fig. 3.2.2). Matsuo (1987) found the following correlation between them (Fig. 3.2.3):</p>
+        <div class="math-block">$$\lambda^*\simeq0.0912\ln(w_n)-0.238 \tag{3.2.13}$$</div>
+        <figure class="figure figure-small">
+          <img src="images/fig3-2-2.svg" alt="Placeholder for oedometer test results for peats with different natural water content" loading="lazy">
+          <figcaption>Fig. 3.2.2 Oedometer test results for peats with different natural water content</figcaption>
+        </figure>
+        <figure class="figure figure-small">
+          <img src="images/fig3-2-3.svg" alt="Placeholder for compression index versus natural water content of peats" loading="lazy">
+          <figcaption>Fig. 3.2.3 Compression index versus natural water content of peats</figcaption>
+        </figure>
+
+        <p>However, the isotropic swelling index, defined in Eq. (3.1.22) of Chapter 3.1.2, is not identical to the oedometric swelling index. This difference arises because, under one-dimensional compression, the effective stress path is more elongated than the corresponding increment in the mean effective principal stress (Fig. 3.2.4). The relationship between the two indices can be formulated as follows:</p>
+        <div class="math-block">$$\kappa^*=\kappa^*_{oed}\frac{p'}{\sigma'_z}\frac{\partial\sigma'_z}{\partial p'}=\kappa^*_{oed}\frac{1+2K_{0,OC}}{3}\frac{\partial\sigma'_z}{\partial p'} \tag{3.2.14}$$</div>
+        <p>Here, $K_{0,OC}$ varies depending on the stress state. The change in $K_{0,OC}$ and the stress change ratio $\partial\sigma'_z/\partial p'$ can be determined via the constitutive relationship, or Eq. (3.1.7) of Chapter 3.1.1, by assuming the perfect lateral constraint (i.e., $\delta\varepsilon^e_r=0$):</p>
+        <div class="math-block">
+          $$K_{0,OC}=K_{0,NC}\mathrm{OCR}-(\mathrm{OCR}-1)\frac{\alpha^2\nu_{vh}}{1-\alpha\nu_{vh}} \tag{3.2.15}$$
+          $$\frac{\partial\sigma'_z}{\partial p'}=\frac{3(1-\alpha\nu_{vh})}{1-\alpha\nu_{vh}+2\alpha^2\nu_{vh}} \tag{3.2.16}$$
+        </div>
+        <p>Substituting Eqs. (3.2.15) and (3.2.16) into Eq. (3.2.14) yields:</p>
+        <div class="math-block">$$\kappa^*=\kappa^*_{oed}\frac{(1-\alpha\nu_{vh})(1+2K_{0,NC}\mathrm{OCR})-2(\mathrm{OCR}-1)\alpha^2\nu_{vh}}{1-\alpha\nu_{vh}+2\alpha^2\nu_{vh}} \tag{3.2.17}$$</div>
+        <p>With the typical values of $(K_{0,NC},\alpha,\nu_{vh})$ for peats, presented in Table 3.1.1 and Fig. 3.1.4 (a),</p>
+        <div class="math-block">$$\kappa^*\simeq(2.6\to1.7)\kappa^*_{oed}\qquad(\mathrm{OCR}:4\to1) \tag{3.2.18}$$</div>
+        <p>This indicates the scaling remains reasonably constant within the practical range of OCR (&lt; 4). With this scaling in mind, the simpler oedometer test can substitute for the isotropic compression tests in characterisation for compressibility. Note that, in typical modelling approaches, the isotropic index $\kappa^*$ is treated as a material constant which defines the stiffness scale together with $p'$ as discussed in Chapter 3.1.2. The oedometric index $\kappa^*_{oed}$ is therefore the dependent variable.</p>
+        <figure class="figure figure-small">
+          <img src="images/fig3-2-4.svg" alt="Placeholder for the schematic effective stress path under one-dimensional compression" loading="lazy">
+          <figcaption>Fig. 3.2.4 Schematic effective stress path under 1-D compression</figcaption>
+        </figure>
+      </section>
+    </main>
+  </div>
+  <script src="toc.js"></script>
+</body>
+</html>

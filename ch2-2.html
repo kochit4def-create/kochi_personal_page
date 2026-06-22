@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch2.2 Principal stress and strain</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" data-current="ch2-2"></aside>
+    <main class="content">
+      <section class="note-block">
+        <p class="eyebrow">Ch2.2</p>
+        <h1>Principal stress and strain</h1>
+
+        <p>In continuum mechanics, the concept of principal directions, along which the stress and strain tensors become diagonal, is of fundamental significance. These directions correspond to orientations where shear components vanish, allowing the mechanical response of materials to be interpreted in terms of purely normal actions (Fig. 2.2.1). The principal values, termed principal stresses and principal strains, provide a basis for simplifying the mathematical treatment of deformation.</p>
+        <figure class="figure">
+          <img src="images/fig2-2-1.svg" alt="Placeholder for the conceptual diagram of principal stresses in a rotated coordinate system" loading="lazy">
+          <figcaption>Fig. 2.2.1 Conceptual diagram of principal stresses acting in a rotated coordinate system</figcaption>
+        </figure>
+
+        <p>The principal stresses are obtained as the eigenvalues $\sigma_i$ of the Cauchy stress tensor $\boldsymbol{\sigma}$:</p>
+        <div class="math-block">$$\det(\boldsymbol{\sigma}-\sigma_i\mathbf{I})=0 \tag{2.2.1}$$</div>
+        <p>The corresponding eigenvectors $\boldsymbol{\Upsilon}_i$ are determined by solving:</p>
+        <div class="math-block">$$(\boldsymbol{\sigma}-\sigma_i\mathbf{I})\boldsymbol{\Upsilon}_i=0 \tag{2.2.2}$$</div>
+        <p>Their unit vectors $\mathbf{e}_i$ are:</p>
+        <div class="math-block">$$\mathbf{e}_i=\frac{\boldsymbol{\Upsilon}_i}{\lVert\boldsymbol{\Upsilon}_i\rVert} \tag{2.2.3}$$</div>
+        <p>Here, $\lVert\ \rVert$ denotes the norm of a vector. The rotation to identify the principal stress direction is then mathematically described by the eigenvector matrix $\mathbf{Q}=[\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3]$:</p>
+        <div class="math-block">$$\mathbf{Q}^{\mathsf T}\boldsymbol{\sigma}\mathbf{Q}=\begin{bmatrix}\sigma_1&0&0\\0&\sigma_2&0\\0&0&\sigma_3\end{bmatrix} \tag{2.2.4}$$</div>
+        <p>The principal stresses are ordered as follows:</p>
+        <div class="math-block">$$\sigma_1>\sigma_2>\sigma_3 \tag{2.2.5}$$</div>
+        <p>Here, $\sigma_1$ is the major (maximum) principal stress, $\sigma_2$ the intermediate principal stress, and $\sigma_3$ the minor principal stress. Similarly, the incremental principal strains are obtained as the eigenvalues of the linear strain increment tensor $\mathrm{d}\boldsymbol{\varepsilon}$ and ordered as follows:</p>
+        <div class="math-block">$$\mathrm{d}\varepsilon_1>\mathrm{d}\varepsilon_2>\mathrm{d}\varepsilon_3 \tag{2.2.6}$$</div>
+
+        <p>In geotechnical engineering, most laboratory tests are designed to apply and measure stresses along principal directions, such as in oedometer or triaxial tests (Fig. 2.2.2), thereby reducing the complexity and enhancing the precision of interpretation.</p>
+        <figure class="figure figure-small">
+          <img src="images/fig2-2-2.svg" alt="Placeholder for stress condition in a triaxial test" loading="lazy">
+          <figcaption>Fig. 2.2.2 Stress condition in triaxial test</figcaption>
+        </figure>
+        <p>Under conventional triaxial compression conditions, the axial stress $\sigma_a$ exceeds the radial stress $\sigma_r$, and thus they correspond to the major and minor principal stresses, respectively:</p>
+        <div class="math-block">
+          $$\sigma_1=\sigma_a \tag{2.2.7}$$
+          $$\sigma_2=\sigma_3=\sigma_r \tag{2.2.8}$$
+        </div>
+        <p>The effective principal stresses then become:</p>
+        <div class="math-block">
+          $$\sigma'_1=\sigma_a-u=\sigma'_a \tag{2.2.9}$$
+          $$\sigma'_2=\sigma'_3=\sigma_r-u=\sigma'_r \tag{2.2.10}$$
+        </div>
+        <p>Rather than directly using these principal stresses, it is more practical to represent the triaxial stress state using two scalar quantities: the mean effective stress $p'$, and the deviatoric stress $q$, which express the isotropic and distortional components of the effective stress, respectively:</p>
+        <div class="math-block">
+          $$p'=\frac{\sigma'_1+\sigma'_2+\sigma'_3}{3}=\frac{\sigma'_a+2\sigma'_r}{3} \tag{2.2.11}$$
+          $$q=\sigma_1-\sigma_3=\sigma_a-\sigma_r=\sigma'_a-\sigma'_r \tag{2.2.12}$$
+        </div>
+        <p>Also, the stress ratio defined as follows is often used in soil mechanics:</p>
+        <div class="math-block">$$\eta=\frac{q}{p'} \tag{2.2.13}$$</div>
+
+        <p>Meanwhile, the scalar $q$ is not the sole measure of the deviatoric character of a stress state. The deviatoric stress tensor $\mathbf{s}$ is here introduced as the most general representation of deviatoric stress conditions:</p>
+        <div class="math-block">
+          $$\mathbf{s}=\boldsymbol{\sigma}'-p'\mathbf{I}=\begin{bmatrix}\sigma'_x-p'&\tau_{xy}&\tau_{xz}\\\tau_{yx}&\sigma'_y-p'&\tau_{yz}\\\tau_{zx}&\tau_{zy}&\sigma'_z-p'\end{bmatrix}$$
+          $$=\begin{bmatrix}\frac{1}{3}(2\sigma'_x-\sigma'_y-\sigma'_z)&\tau_{xy}&\tau_{xz}\\\tau_{yx}&\frac{1}{3}(-\sigma'_x+2\sigma'_y-\sigma'_z)&\tau_{yz}\\\tau_{zx}&\tau_{zy}&\frac{1}{3}(-\sigma'_x-\sigma'_y+2\sigma'_z)\end{bmatrix} \tag{2.2.14}$$
+        </div>
+        <p>Their principal values are obtained by the orthogonal transformation:</p>
+        <div class="math-block">$$\mathbf{Q}^{\mathsf T}\mathbf{s}\mathbf{Q}=\begin{bmatrix}s_1&0&0\\0&s_2&0\\0&0&s_3\end{bmatrix}=\begin{bmatrix}\sigma'_1-p'&0&0\\0&\sigma'_2-p'&0\\0&0&\sigma'_3-p'\end{bmatrix} \tag{2.2.15}$$</div>
+        <p>This implies that, in the principal stress space, any stress state can be decomposed into an isotropic stress vector $\mathbf{p}'=p'(1,1,1)$ and a deviatoric stress vector consisting of the principal components of $\mathbf{s}$, or $s_i$. Also, the trace of the transformed deviatoric tensor satisfies $\operatorname{tr}(\mathbf{Q}^{\mathsf T}\mathbf{s}\mathbf{Q})=s_1+s_2+s_3=0$, or the deviatoric stress vector lies within a certain plane. This plane is referred to as the $\pi$-plane. The norm of the deviatoric stress vector is:</p>
+        <div class="math-block">$$\lVert s_i\rVert=\frac{1}{\sqrt{3}}\sqrt{(\sigma'_1-\sigma'_2)^2+(\sigma'_2-\sigma'_3)^2+(\sigma'_3-\sigma'_1)^2} \tag{2.2.16}$$</div>
+        <p>Under triaxial compression conditions, this reduces to a linear function of $q$:</p>
+        <div class="math-block">$$\lVert s_i\rVert=\sqrt{\frac{2}{3}}(\sigma'_1-\sigma'_3)=\sqrt{\frac{2}{3}}q \tag{2.2.17}$$</div>
+        <p>This demonstrates that the scalar quantity $q$, commonly used in soil mechanics, is consistent with the representative magnitude of the general deviatoric stress tensor. The physical interpretation of $p'$ and $q$ in the principal stress space is illustrated in Fig. 2.2.3.</p>
+        <figure class="figure">
+          <img src="images/fig2-2-3.svg" alt="Placeholder for isotropic and deviatoric stress in principal stress coordinates" loading="lazy">
+          <figcaption>Fig. 2.2.3 Visualisation of isotropic and deviatoric stress along conventional triaxial compression test path in principal stress coordinates</figcaption>
+        </figure>
+
+        <p>Note that the roles are reversed in the case of triaxial extension, where the axial stress is lower than the radial confinement:</p>
+        <div class="math-block">
+          $$\sigma_1=\sigma_r \tag{2.2.18}$$
+          $$\sigma_2=\sigma_3=\sigma_a \tag{2.2.19}$$
+        </div>
+        <p>Similarly, the incremental principal strains are given as:</p>
+        <div class="math-block">
+          $$\mathrm{d}\varepsilon_1=\mathrm{d}\varepsilon_a \tag{2.2.20}$$
+          $$\mathrm{d}\varepsilon_2=\mathrm{d}\varepsilon_3=\mathrm{d}\varepsilon_r \tag{2.2.21}$$
+        </div>
+        <p>The strain measures conjugate to the stress invariants $(p',q)$ are defined such that the external work input per unit volume can be expressed compactly as (Wood 1990):</p>
+        <div class="math-block">$$\mathrm{d}W=p'\,\mathrm{d}\varepsilon_v+q\,\mathrm{d}\varepsilon_d \tag{2.2.22}$$</div>
+        <p>Here, $\mathrm{d}\varepsilon_v$ denotes the volumetric strain increment, representing the isotropic component of deformation, and $\mathrm{d}\varepsilon_d$ the deviatoric strain increment, associated with shear deformation. The work input can also be represented by the principal values as:</p>
+        <div class="math-block">$$\mathrm{d}W=\sigma'_1\mathrm{d}\varepsilon_1+\sigma'_2\mathrm{d}\varepsilon_2+\sigma'_3\mathrm{d}\varepsilon_3 \tag{2.2.23}$$</div>
+        <p>Especially under the triaxial condition,</p>
+        <div class="math-block">$$\mathrm{d}W=p'(\mathrm{d}\varepsilon_a+2\mathrm{d}\varepsilon_r)+q\frac{2}{3}(\mathrm{d}\varepsilon_a-\mathrm{d}\varepsilon_r) \tag{2.2.24}$$</div>
+        <p>By comparing Eq. (2.2.24) to (2.2.22), the volumetric and deviatoric strain increments are defined as:</p>
+        <div class="math-block">
+          $$\mathrm{d}\varepsilon_v=\mathrm{d}\varepsilon_a+2\mathrm{d}\varepsilon_r \tag{2.2.25}$$
+          $$\mathrm{d}\varepsilon_d=\frac{2}{3}(\mathrm{d}\varepsilon_a-\mathrm{d}\varepsilon_r) \tag{2.2.26}$$
+        </div>
+        <p>Their total (natural) strain is described as:</p>
+        <div class="math-block">
+          $$\varepsilon_{nv}=\varepsilon_{na}+2\varepsilon_{nr} \tag{2.2.27}$$
+          $$\varepsilon_{nd}=\frac{2}{3}(\varepsilon_{na}-\varepsilon_{nr}) \tag{2.2.28}$$
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="toc.js"></script>
+</body>
+</html>

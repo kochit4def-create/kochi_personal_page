@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch3.1.3 Hysteretic elasticity</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" data-current="ch3-1-3"></aside>
+    <main class="content">
+      <section class="note-block">
+        <p class="eyebrow">Ch3.1.3</p>
+        <h1>Hysteretic (nonlinear) elasticity</h1>
+
+        <p>Soils subjected to unloading-reloading typically exhibit hysteretic elasticity, a closed stress-strain loop. There may be some debate as to whether such behaviour should be termed elasticity, but incorporating such nonlinearity into the elastic law remains the simplest and most rational approach, particularly in view of the overall consistency of the model.</p>
+        <figure class="figure">
+          <img src="images/fig3-1-5.svg" alt="Placeholder for the schematic of hysteretic elasticity concept" loading="lazy">
+          <figcaption>Fig. 3.1.5 Schematic of hysteretic elasticity concept</figcaption>
+        </figure>
+
+        <p>The hysteretic elasticity is often associated with a local stress origin $(p'_o,q_o)$ (e.g., Jardine, 1992; Whittle and Kavvadas, 1994), defined as the point where the loading direction reverses as shown in Fig. 3.1.5 (a). In discrete data, the stress reversal can be detected by comparing two consecutive stress increment vectors $\Delta\mathbf{s}_{i-1}=(\Delta p'_{i-1},\Delta q_{i-1})$ and $\Delta\mathbf{s}_i=(\Delta p'_i,\Delta q_i)$ as:</p>
+        <div class="math-block">$$\Delta\mathbf{s}_{i-1}\mathbin{\cdot}\Delta\mathbf{s}_i\leq\lVert\Delta\mathbf{s}_{i-1}\rVert\lVert\Delta\mathbf{s}_i\rVert\cos\theta_c \tag{3.1.26}$$</div>
+        <p>Here, $\theta_c$ is a threshold angle. The stress path moves away from the local stress origin during the subsequent loading / unloading. In this study, this is quantified by a dimensionless distance $\xi$, consistent with elastic energy, as schematised in Fig. 3.1.5 (b):</p>
+        <div class="math-block">$$\xi=\left|\ln\left(\frac{p'}{p'_o}\right)\right|\sqrt{1+2\frac{K^*}{J^*}\frac{q-q_o}{p'-p'_o}+\frac{K^*}{3G^*}\left(\frac{q-q_o}{p'-p'_o}\right)^2} \tag{3.1.27}$$</div>
+        <p>The special case $p'\to p'_o$ gives:</p>
+        <div class="math-block">$$\xi=\sqrt{\frac{K^*}{3G^*}}\frac{|q-q_o|}{p'_o} \tag{3.1.28}$$</div>
+        <p>Adopting the hysteretic parameter $\xi$, the tangential slope $\kappa^*$ is here modelled as:</p>
+        <div class="math-block">$$\kappa^*(\xi)=\kappa^*_0+(\kappa^*_{max}-\kappa^*_0)\left[1-\exp\left\{-c\xi^n\right\}\right] \tag{3.1.29}$$</div>
+        <p>Here, $\kappa^*_0$ is the initial tangential slope of URL, $\kappa^*_{max}$ the asymptotic maximum tangential slope, and $c>0$ and $n>0$ are material parameters calibrated to unloading-reloading loops as schematised in Fig. 3.1.5 (c). Also, the tangential elastic moduli are given as:</p>
+        <div class="math-block">$$\frac{G_0}{G}=\frac{E_0}{E}=\frac{K_0}{K}=\frac{\kappa^*(\xi)}{\kappa^*_0}\frac{p'_o}{p'} \tag{3.1.30}$$</div>
+        <p>With suitable $c$ and $n$ (Table 3.1.2), the model captures both volumetric and shear responses over small to middle strains. Fig. 3.1.6 (a) compares simulated oedometric stress–strain loops with an experimental data (Personal test data), and Fig. 3.1.6 (b) shows the progressive reduction of the secant shear modulus under cyclic loading (Test data after Hayashi et al., 2013), demonstrating consistent agreement even across different stress paths.</p>
+        <figure class="figure">
+          <img src="images/fig3-1-6.svg" alt="Placeholder for examples of simulation using the present hysteretic elasticity model" loading="lazy">
+          <figcaption>Fig. 3.1.6 Examples of simulation using the present hysteretic elasticity model</figcaption>
+        </figure>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 3.1.2 Material parameters used for the simulation</caption>
+            <thead>
+              <tr>
+                <th>Assumed natural water content $w$ (%)</th>
+                <th>$\alpha^2=E_h/E_v$</th>
+                <th>$\nu_{vh}$</th>
+                <th>$\kappa^*_0$</th>
+                <th>$\kappa^*_{max}$</th>
+                <th>$c$</th>
+                <th>$n$</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1,000</td><td>2.4</td><td>0.02</td><td>$0.03\lambda^*$</td><td>$0.20\lambda^*$</td><td>2.0</td><td>4.0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="toc.js"></script>
+</body>
+</html>

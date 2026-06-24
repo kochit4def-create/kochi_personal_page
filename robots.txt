@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kochit4def-create.github.io/kochi_personal_page/sitemap.xml
